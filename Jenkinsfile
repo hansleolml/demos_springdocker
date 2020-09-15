@@ -27,10 +27,18 @@ pipeline {
 		}
 	    }
         }
+	stage('login docker') {
+            steps {
+	    	sh("docker build -t hansleolml/spring_docker:latest")
+	    }
+        }
+	 .
     }
+    /*
     post { 
         always { 
             cleanWs()
         }
     }
+    */
 }
