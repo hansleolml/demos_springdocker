@@ -20,6 +20,14 @@ pipeline {
                 sh("ls -la")
             }
         }
+        stage('login docker') {
+            steps {
+            	
+            	docker.withRegistry('https://hub.docker.com/', 'jenkins-user-for-docker-repository') {
+
+    			}
+            }
+        }
     }
     post { 
         always { 
