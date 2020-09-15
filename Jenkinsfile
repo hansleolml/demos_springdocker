@@ -27,12 +27,11 @@ pipeline {
 		}
 	    }
         }
-	stage('login docker') {
+	stage('Docker Build') {
             steps {
 	    	sh("docker build -t hansleolml/spring_docker:latest")
 	    }
         }
-	 .
     }
     /*
     post { 
