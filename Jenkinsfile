@@ -21,9 +21,8 @@ pipeline {
             }
         }
         stage('login docker') {
-            	
-        	docker.withRegistry('https://registry.hub.docker.com', 'jenkins-user-for-docker-repository') {
-
+            steps {	
+	        	docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {}
 			}
         }
     }
