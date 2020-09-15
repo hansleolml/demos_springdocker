@@ -20,16 +20,18 @@ pipeline {
                 sh("ls -la")
             }
         }
-        stage('login docker') {
-            steps {
-	    	script {
-	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {}
-		}
-	    }
-        }
 	stage('Docker Build') {
             steps {
 	    	sh("docker build -t hansleolml/spring_docker:latest .")
+	    }
+        }
+	stage('login docker') {
+            steps {
+	    	script {
+	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
+			    sh("docker push hansleolml/demo_spring:latest")
+			}
+		}
 	    }
         }
     }
