@@ -17,6 +17,7 @@ pipeline {
             steps {
             	sh("hostname")
                 sh("az --version")
+                sh("ls -la")
             }
         }
     }
