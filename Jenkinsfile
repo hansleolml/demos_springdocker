@@ -19,21 +19,21 @@ pipeline {
                 sh("az --version")
                 sh("ls -la")
             }
-        }/*
+        }
         stage('Docker Build') {
             steps {
                 script{
                     //def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    //def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
+                    def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
     	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
                 }
             }
-        }*/
+        }
         stage('Push Docker') {
             steps {
     	    	script {
     	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
-                        def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
+                        //def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
                         customImage.push()
                         customImage.push('latest')
                     }
