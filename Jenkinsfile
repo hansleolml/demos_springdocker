@@ -19,7 +19,7 @@ pipeline {
                 sh("az --version")
                 sh("ls -la")
             }
-        }
+        }/*
         stage('Docker Build') {
             steps {
                 script{
@@ -28,7 +28,7 @@ pipeline {
     	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
                 }
             }
-        }
+        }*/
         stage('login docker') {
             steps {
     	    	script {
