@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script{
                     //def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    def customImage = docker.build("hansleolml/demo_spring")
+                    def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_NUMBER}")
     	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
                 }
             }
@@ -33,9 +33,8 @@ pipeline {
             steps {
     	    	script {
     	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
-                        def customImage = docker.build("hansleolml/demo_spring")
-                        customImage.push('${env.BUILD_NUMBER}')
-                        customImage.push('latest')
+                        def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_NUMBER}")
+                        customImage.push('')
                     }
                 }
             }
