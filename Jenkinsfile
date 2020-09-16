@@ -22,9 +22,11 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                //def customImage = docker.build("my-image:${env.BUILD_ID}")
-                def customImage = docker.build("hansleolml/demo_spring")
-	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
+                script{
+                    //def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    def customImage = docker.build("hansleolml/demo_spring")
+    	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
+                }
             }
         }
         stage('login docker') {
