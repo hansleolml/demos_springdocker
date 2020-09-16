@@ -29,12 +29,12 @@ pipeline {
                 }
             }
         }*/
-        stage('login docker') {
+        stage('Push Docker') {
             steps {
     	    	script {
     	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
                         def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
-                        customImage.push('latest')
+                        customImage.push()
                     }
                 }
             }
