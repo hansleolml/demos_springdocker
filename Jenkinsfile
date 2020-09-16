@@ -20,19 +20,21 @@ pipeline {
                 sh("ls -la")
             }
         }
-	stage('Docker Build') {
+        stage('Docker Build') {
             steps {
-	    	sh("docker build -t hansleolml/demo_spring:latest .")
-	    }
+                //def customImage = docker.build("my-image:${env.BUILD_ID}")
+                def customImage = docker.build("hansleolml/demo_spring")
+	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
+            }
         }
-	stage('login docker') {
+        stage('login docker') {
             steps {
-	    	script {
-	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
-			    sh("docker push hansleolml/demo_spring:latest")
-			}
-		}
-	    }
+    	    	script {
+    	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
+                        customImage.push('latest')
+                    }
+                }
+            }
         }
     }
     /*
