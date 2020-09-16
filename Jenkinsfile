@@ -23,8 +23,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script{
-                    //def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
+                    //def customImage = docker.build("my-image:${env.BUILD_ID}"), el def lo convierte en variable local
+                    customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
     	    	    //sh("docker build -t hansleolml/demo_spring:latest .")
                 }
             }
