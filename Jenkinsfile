@@ -34,6 +34,7 @@ pipeline {
     	    	script {
     	    		docker.withRegistry('https://registry.hub.docker.com','jenkins-user-for-docker-repository') {
                         def customImage = docker.build("hansleolml/demo_spring")
+                        customImage.push('${env.BUILD_NUMBER}')
                         customImage.push('latest')
                     }
                 }
