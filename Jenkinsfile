@@ -33,7 +33,7 @@ pipeline {
         stage('Push Docker') {
             steps {
     	    	script {
-                    docker.withRegistry('https://registry.hub.docker.com','{$AZ_DOCKER_KEY_ID}') {
+                    docker.withRegistry('https://registry.hub.docker.com','${AZ_DOCKER_KEY_ID}') {
                         //def customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
                         customImage.push()
                         customImage.push('latest')
