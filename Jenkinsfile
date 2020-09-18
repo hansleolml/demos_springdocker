@@ -1,13 +1,14 @@
 pipeline {
     agent { 
-    	node { 
-    		label 'jenkins_slave'
-    	}
+        node { 
+            label 'jenkins_slave'
+        }
     }
     environment {
         AZ_ACCESS_KEY_ID     = credentials('3f56ad64-c46f-4253-a70d-424d0402ab97')
         //AZ_DOCKER_KEY_ID     = credentials('jenkins-user-for-docker-repository')
         AZ_DOCKER_KEY_ID     = 'jenkins-user-for-docker-repository'
+        REPOSITORY           = 'hansleolml/demo_spring'
     }
     stages {
         stage('Git Clone'){
@@ -17,7 +18,7 @@ pipeline {
         }
         stage('Prueba login') {
             steps {
-            	sh("hostname")
+                sh("hostname")
                 sh("az --version")
                 sh("ls -la")
             }
@@ -25,13 +26,13 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script{
-                    customImage = docker.build("hansleolml/demo_spring:${env.BUILD_ID}")
+                    customImage = docker.build(REPOSITORY+":${env.BUILD_ID}")
                 }
             }
         }
         stage('Push Docker') {
             steps {
-    	    	script {
+                script {
                     docker.withRegistry('https://registry.hub.docker.com',AZ_DOCKER_KEY_ID) {
                         customImage.push()
                         customImage.push('latest')
