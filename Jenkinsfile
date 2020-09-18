@@ -6,8 +6,8 @@ pipeline {
     }
     environment {
         AZ_ACCESS_KEY_ID     = credentials('3f56ad64-c46f-4253-a70d-424d0402ab97')
-        AZ_DOCKER_KEY_ID     = credentials('jenkins-user-for-docker-repository')
-        //AZ_DOCKER_KEY_ID     = 'jenkins-user-for-docker-repository'
+        //AZ_DOCKER_KEY_ID     = credentials('jenkins-user-for-docker-repository')
+        AZ_DOCKER_KEY_ID     = 'jenkins-user-for-docker-repository'
     }
     stages {
         stage('Git Clone'){
