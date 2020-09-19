@@ -40,7 +40,6 @@ pipeline {
                 }
             }
         }
-        */
         stage('Ver datos') {
             steps {
                 script {
@@ -51,6 +50,7 @@ pipeline {
                 }
             }
         }
+        */
         stage('deploy k8s') {
             steps {
                 /*
