@@ -53,12 +53,9 @@ pipeline {
         */
         stage('deploy k8s') {
             steps {
-                /*
                     withCredentials([azureServicePrincipal('jenkins-user-for-k8s-azure')]) {
                         echo "funciono"
                     }
-                */
-                echo "hola"
                 
             }
         }
