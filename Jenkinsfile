@@ -15,6 +15,7 @@ pipeline {
                 git credentialsId: 'jenkins-user-for-git-repository', url: 'https://github.com/hansleolml/demos_springdocker.git'
             }
         }
+        /*
         stage('Prueba login') {
             steps {
                 sh("hostname")
@@ -39,6 +40,7 @@ pipeline {
                 }
             }
         }
+        */
         stage('Ver datos') {
             steps {
                 script {
