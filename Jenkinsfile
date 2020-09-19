@@ -58,7 +58,7 @@ pipeline {
                         echo "funciono"
                     }
                 */
-                echo "'jenkins-user-for-k8s-azure'"
+                echo "hola"
                 
             }
         }
