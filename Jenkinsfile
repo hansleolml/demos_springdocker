@@ -45,6 +45,11 @@ pipeline {
                     sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                     sh 'az aks get-credentials --resource-group kubernetesGroup --name nameAKSCluster'
                     sh 'kubectl get nodes'
+                    sh 'kubectl apply -f kubernetes/kuber_namespace.yaml'
+                    sh 'kubectl get ns' 
+                    sh 'kubectl apply -n spring -f kubernetes/kuber_deploy_loadba.yaml' 
+                    sh 'kubectl -n spring get pods' 
+                    sh 'kubectl -n spring get svc' 
                 }                   
             }
         }
