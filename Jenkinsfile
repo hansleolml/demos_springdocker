@@ -56,8 +56,9 @@ pipeline {
                     sh 'kubectl -n spring get svc' 
                 }                   
             }
-        }
+        }*/
     }
+    /*
     post { 
         always { 
             cleanWs()
