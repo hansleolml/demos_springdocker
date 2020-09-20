@@ -14,7 +14,7 @@ pipeline {
             steps {
                 git credentialsId: 'jenkins-user-for-git-repository', url: 'https://github.com/hansleolml/demos_springdocker.git'
             }
-        }/*
+        }
         stage('Prueba login') {
             steps {
                 sh("hostname")
@@ -38,7 +38,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage('deploy k8s') {
             steps {
                 withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
@@ -54,11 +54,9 @@ pipeline {
             }
         }
     }
-    /*
     post { 
         always { 
             cleanWs()
         }
     }
-    */
 }

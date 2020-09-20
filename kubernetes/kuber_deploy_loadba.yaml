@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: wordpress 
-        image: hansleolml/demo_spring:1.0
+        image: hansleolml/demo_spring:latest
         ports:
         - containerPort: 8080
