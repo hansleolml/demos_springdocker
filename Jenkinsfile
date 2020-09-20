@@ -36,8 +36,8 @@ pipeline {
                     docker.withRegistry('',AZ_DOCKER_KEY_ID) {
                         customImage.push()
                         customImage.push('latest')
-                        sh 'echo ${env.REPOSITORY}'
-                        //sh 'docker rmi ${env.REPOSITORY}:${env.BUILD_ID}'
+                        //sh 'echo ${env.REPOSITORY}'
+                        sh "docker rmi ${env.REPOSITORY}:${env.BUILD_ID}"
                     }
                 }
             }
