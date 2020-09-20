@@ -5,9 +5,9 @@ pipeline {
         }
     }
     environment {
-        AZ_ACCESS_KEY_ID     = credentials('3f56ad64-c46f-4253-a70d-424d0402ab97')
         AZ_DOCKER_KEY_ID     = 'jenkins-user-for-docker-repository'
         REPOSITORY           = 'hansleolml/demo_spring'
+        AZ_K8S_KEY_ID        = 'jenkins-user-for-k8s-azure'
     }
     stages {
         stage('Git Clone'){
@@ -15,7 +15,6 @@ pipeline {
                 git credentialsId: 'jenkins-user-for-git-repository', url: 'https://github.com/hansleolml/demos_springdocker.git'
             }
         }
-        /*
         stage('Prueba login') {
             steps {
                 sh("hostname")
@@ -40,10 +39,9 @@ pipeline {
                 }
             }
         }
-        */
         stage('deploy k8s') {
             steps {
-                    withCredentials([azureServicePrincipal('jenkins-user-for-k8s-azure')]) {
+                    withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
                         sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                     }
                 
