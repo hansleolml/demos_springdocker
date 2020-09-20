@@ -8,6 +8,7 @@ pipeline {
         AZ_DOCKER_KEY_ID     = 'jenkins-user-for-docker-repository'
         REPOSITORY           = 'hansleolml/demo_spring'
         AZ_K8S_KEY_ID        = 'jenkins-user-for-k8s-azure'
+        //TODO = 'REPOSITORY+":${env.BUILD_ID}"'
     }
     stages {
         stage('Git Clone'){
@@ -35,7 +36,7 @@ pipeline {
                     docker.withRegistry('',AZ_DOCKER_KEY_ID) {
                         customImage.push()
                         customImage.push('latest')
-                        sh 'docker image rm ${env.REPOSITORY}:${env.BUILD_ID}'
+                        //sh 'docker rmi ${env.REPOSITORY}:${env.BUILD_ID}'
                     }
                 }
             }
