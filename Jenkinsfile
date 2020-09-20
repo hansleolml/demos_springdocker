@@ -43,7 +43,7 @@ pipeline {
             steps {
                     withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
                         sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-                        //sh 'az aks get-credentials --resource-group kubernetesGroup --name nameAKSCluster'
+                        sh 'az aks get-credentials --resource-group kubernetesGroup --name nameAKSCluster'
                         sh 'kubectl get nodes'
                     }
                 
