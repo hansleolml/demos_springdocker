@@ -36,11 +36,12 @@ pipeline {
                     docker.withRegistry('',AZ_DOCKER_KEY_ID) {
                         customImage.push()
                         customImage.push('latest')
+                        echo ${env.REPOSITORY}
                         //sh 'docker rmi ${env.REPOSITORY}:${env.BUILD_ID}'
                     }
                 }
             }
-        }
+        }/*
         stage('deploy k8s') {
             steps {
                 withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
@@ -56,7 +57,7 @@ pipeline {
                 }                   
             }
         }
-    }/*
+    }
     post { 
         always { 
             cleanWs()
