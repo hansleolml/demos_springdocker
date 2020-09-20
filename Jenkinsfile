@@ -8,7 +8,6 @@ pipeline {
         AZ_DOCKER_KEY_ID     = 'jenkins-user-for-docker-repository'
         REPOSITORY           = 'hansleolml/demo_spring'
         AZ_K8S_KEY_ID        = 'jenkins-user-for-k8s-azure'
-        //TODO = 'REPOSITORY+":${env.BUILD_ID}"'
     }
     stages {
         stage('Git Clone'){
@@ -36,12 +35,11 @@ pipeline {
                     docker.withRegistry('',AZ_DOCKER_KEY_ID) {
                         customImage.push()
                         customImage.push('latest')
-                        //sh 'echo ${env.REPOSITORY}'
                         sh "docker rmi ${env.REPOSITORY}:${env.BUILD_ID}"
                     }
                 }
             }
-        }/*
+        }
         stage('deploy k8s') {
             steps {
                 withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
@@ -56,12 +54,11 @@ pipeline {
                     sh 'kubectl -n spring get svc' 
                 }                   
             }
-        }*/
+        }
     }
-    /*
     post { 
         always { 
             cleanWs()
         }
-    }*/
+    }
 }
