@@ -23,7 +23,7 @@ pipeline {
                 sh("ls -la")
             }
         }
-        /*
+        
         stage('Docker Build') {
             steps {
                 script{
@@ -31,6 +31,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('Push Docker') {
             steps {
                 script {
