@@ -15,6 +15,7 @@ pipeline {
                 git credentialsId: 'jenkins-user-for-git-repository', url: 'https://github.com/hansleolml/demos_springdocker.git'
             }
         }
+        /*
         stage('Prueba login') {
             steps {
                 sh("hostname")
@@ -54,7 +55,7 @@ pipeline {
                     sh 'kubectl -n spring get svc' 
                 }                   
             }
-        }
+        }*/
     }
     post { 
         always { 
