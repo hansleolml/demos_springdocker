@@ -43,7 +43,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('deploy k8s') {
             steps {
                 withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
@@ -58,7 +58,7 @@ pipeline {
                     sh 'kubectl -n spring get svc' 
                 }                   
             }
-        }*/
+        }
     }
     post { 
         always { 
