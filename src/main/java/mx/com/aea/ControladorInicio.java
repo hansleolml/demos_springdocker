@@ -9,6 +9,6 @@ public class ControladorInicio {
     
     @GetMapping("/")
     public String inicio(){
-        return "Hola mundo con Spring, RAAAAAAAAAAA";
+        return "Hola mundo con Spring, hola2";
     }
 }
