@@ -15,7 +15,7 @@ pipeline {
                 git credentialsId: 'jenkins-user-for-git-repository', url: 'https://github.com/hansleolml/demos_springdocker.git'
             }
         }
-        /*
+        
         stage('Prueba login') {
             steps {
                 sh("hostname")
@@ -23,6 +23,7 @@ pipeline {
                 sh("ls -la")
             }
         }
+        /*
         stage('Docker Build') {
             steps {
                 script{
