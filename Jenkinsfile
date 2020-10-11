@@ -31,7 +31,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('Push Docker') {
             steps {
                 script {
@@ -43,6 +43,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('deploy k8s') {
             steps {
                 withCredentials([azureServicePrincipal(AZ_K8S_KEY_ID)]) {
